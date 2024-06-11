@@ -35,7 +35,7 @@ from api.lib.perm.acl.acl import validate_permission
 from api.models.cmdb import Attribute
 from api.models.cmdb import AutoDiscoveryCI
 from api.models.cmdb import AutoDiscoveryCIType
-from api.models.cmdb import AutoDiscoveryCITypeRelation
+# from api.models.cmdb import AutoDiscoveryCITypeRelation
 from api.models.cmdb import CI
 from api.models.cmdb import CIFilterPerms
 from api.models.cmdb import CIType

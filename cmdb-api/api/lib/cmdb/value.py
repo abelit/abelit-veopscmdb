@@ -4,7 +4,7 @@
 from __future__ import unicode_literals
 
 import copy
-import imp
+import importlib as imp
 import os
 import re
 import tempfile
