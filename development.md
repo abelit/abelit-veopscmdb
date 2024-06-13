@@ -36,7 +36,7 @@ flush privileges;
 
 4. 导入基础数据
 ```bash
-docker cp ../docs/cmdb.sql mysql-cmdb:/root/
+docker cp ./docs/cmdb.sql mysql-cmdb:/root/
 
 # docker exec -it mysql-cmdb bash
 
@@ -47,6 +47,10 @@ docker exec -it mysql-cmdb sh -c "mysql -uroot -pRoot_321 cmdb < /root/cmdb.sql"
 
 - 创建表
 ```bash
+cd cmdb-api
+
+source ~/Documents/code/cmdbvenv/bin/activate
+
 flask db-setup 
 flask common-check-new-columns 
 flask cmdb-init-cache
@@ -77,7 +81,12 @@ cd cmdb-api
 
 source ~/Documents/code/cmdbvenv/bin/activate
 
-celery -A celery_worker.celery worker -E -Q one_cmdb_async --autoscale=5,2 --logfile=one_cmdb_async.log -D
+celery -A celery_worker.celery worker -E -Q one_cmdb_async --autoscale=4,1 --logfile=one_cmdb_async.log -D
 
 celery -A celery_worker.celery worker -E -Q acl_async --autoscale=2,1 --logfile=one_acl_async.log -D
+```
+
+- 关闭worker
+```bash
+ps auxww | grep 'celery' | awk '{print $2}' | xargs kill -9
 ```
