@@ -6,8 +6,12 @@ source ~/Documents/code/cmdbvenv/bin/activate
 
 1. 动 mysql 服务, redis 服务,此处以 docker 为例
 ```bash
-mkdir ~/cmdb_db
-docker run -d  -p 3306:3306  --name mysql-cmdb -e MYSQL_ROOT_PASSWORD=Root_321  -v ~/cmdb_db:/var/lib/mysql mysql
+# mkdir ~/cmdb_db
+# docker run -d  -p 3306:3306  --name mysql-cmdb -e MYSQL_ROOT_PASSWORD=Root_321  -v ~/cmdb_db:/var/lib/mysql mysql
+docker rm mysql-cmdb redis
+docker volume rm vecmdb_db
+
+docker run -d  -p 3306:3306  --name mysql-cmdb -e MYSQL_ROOT_PASSWORD=Root_321  -v vecmdb_db:/var/lib/mysql mysql
 docker run -d --name redis -p 6379:6379 redis
 ```
 
