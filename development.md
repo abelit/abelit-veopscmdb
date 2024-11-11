@@ -8,7 +8,7 @@ source ~/Documents/code/cmdbvenv/bin/activate
 ```bash
 # mkdir ~/cmdb_db
 # docker run -d  -p 3306:3306  --name mysql-cmdb -e MYSQL_ROOT_PASSWORD=Root_321  -v ~/cmdb_db:/var/lib/mysql mysql
-docker rm mysql-cmdb redis
+docker rm -f mysql-cmdb redis
 docker volume rm vecmdb_db
 
 docker run -d  -p 3306:3306  --name mysql-cmdb -e MYSQL_ROOT_PASSWORD=Root_321  -v vecmdb_db:/var/lib/mysql mysql
